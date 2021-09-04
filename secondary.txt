@@ -1,3 +1,5 @@
 This is a secondary file that needs to be pulled and then edited.
 
 This is the first edit from local repo.
+
+First double edit; secondary.txt will be simultaneously edited with initiate.txt.
