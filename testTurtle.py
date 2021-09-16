@@ -69,15 +69,31 @@ def testPattern():
         turtle.forward(i)
         turtle.right(98)
     input("enter")
-#testPattern()
+testPattern()
 import math
 def circleSquare():
     r = int(input("Enter Radius of circle: "))
     turtle.circle(r)
     rootTwo = math.sqrt(2)
     d = rootTwo*r
+    h = turtle.heading()
     turtle.left(45)
     drawSquare(d)
+    turtle.setheading(h)
+    turtle.up()
+    turtle.circle(r, 30)
+    h = turtle.heading()
+    turtle.down()
+    turtle.left(45)
+    drawSquare(d)
+    turtle.setheading(h)
+    turtle.up()
+    turtle.circle(r, 30)
+    h = turtle.heading()
+    turtle.down()
+    turtle.left(45)
+    drawSquare(d)
+    turtle.setheading(h)
 #circleSquare()
 
 def cube(d):
