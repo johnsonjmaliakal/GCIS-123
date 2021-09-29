@@ -69,7 +69,7 @@ def testPattern():
         turtle.forward(i)
         turtle.right(98)
     input("enter")
-testPattern()
+#testPattern()
 import math
 def circleSquare():
     r = int(input("Enter Radius of circle: "))
@@ -145,8 +145,37 @@ def squareCircle(d):
     turtle.circle(d/2)
     input("Circle in square done. Press Enter to continue: ")
 
-#d = int(input("Enter side of your square: "))
-#squareCircle(d)
+d = int(input("Enter side of your square: "))
+squareCircle(d)
 
+
+l = []
+
+def slowCircle(r):
+    global l
+    for i in range(360):
+        for j in l:
+            if turtle.xcor() // j[0] == 1 and turtle.ycor() // j[1] == 1:
+                break
+        turtle.circle(r,1)
+        l1 = [turtle.xcor(), turtle.ycor()]
+        l+=[l1]
+    
+
+def slowRect(x, y):
+    global l
+    for i in range(2):
+        for i in range(x):
+            #if current cors = something in the mega list, end
+            turtle.forward(1)
+            l1 = [turtle.xcor(), turtle.ycor()]  
+            l+=[l1]          
+        turtle.right(90)
+        for i in range(y):
+            #if current cors = something in the mega list, end
+            turtle.forward(1)
+            l1 = [turtle.xcor(), turtle.ycor()]  
+            l+=[l1] 
+             
 
 print(turtleState())
