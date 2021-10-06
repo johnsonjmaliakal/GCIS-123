@@ -161,21 +161,29 @@ def slowCircle(r):
         l1 = [turtle.xcor(), turtle.ycor()]
         l+=[l1]
     
-
-def slowRect(x, y):
-    global l
+past = {}
+def slowRect(x, y): #this function tests whether any shapes intersect with current rectangle
+    global past
+    turtle.up()
+    flag = 0
     for i in range(2):
         for i in range(x):
-            #if current cors = something in the mega list, end
-            turtle.forward(1)
-            l1 = [turtle.xcor(), turtle.ycor()]  
-            l+=[l1]          
+            if int(turtle.xcor()) in past.keys() and int(turtle.ycor()) in past.items():
+                flag = 1
+            else:
+                turtle.forward(1)
+                past[turtle.xcor()] = turtle.ycor()   
         turtle.right(90)
         for i in range(y):
-            #if current cors = something in the mega list, end
-            turtle.forward(1)
-            l1 = [turtle.xcor(), turtle.ycor()]  
-            l+=[l1] 
+            if int(turtle.xcor()) in past.keys() and int(turtle.ycor()) in past.items():
+                flag = 1
+            else:
+                turtle.forward(1)
+                past[turtle.xcor()] = turtle.ycor()   
+    if flag == 1:
+        return False
+    else:
+        return True
              
 
 print(turtleState())
