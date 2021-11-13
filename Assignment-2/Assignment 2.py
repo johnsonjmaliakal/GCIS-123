@@ -36,8 +36,59 @@ def Q1a(): #this function is the solution for question 1, part a
                 c+=1
     return [array1, tuple1, list1, set1, dictionary1]
 
-def Q1b():
-    pass
+def Q1b(x):
+    f = open('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'w')
+    #this code prints the array in reverse order
+    for i in range(-1, -(len(x[0])), -1):
+        y = x[0][i]
+        if i == (-(len(x[0])-1)):
+            print(y)
+            f.write(str(y)+'\n')
+        else:
+            print (y, end = ', ')
+            f.write(str(y)+', ')
+    print('\n') #inserts extra blank line 
+
+    #this code prints the tuple in reverse order
+    for i in range(-1, -(len(x[1])), -1):
+        y = x[1][i]
+        if i == (-(len(x[1])-1)):
+            print(y)
+            f.write(y+'\n')
+        else:
+            print (y, end = ', ')
+            f.write(y+', ')
+    print('\n') #inserts extra blank line
+
+    #this code prints the list in reverse order
+    for i in range(-1, -(len(x[2])), -1):
+        y = x[2][i]
+        if i == (-(len(x[2])-1)):
+            print(y)
+            f.write(y+'\n')
+        else:
+            print (y, end = ', ')
+            f.write(y+', ')
+    print('\n') #inserts extra blank line  
+
+    #set is unordered, therefore there is no reverse order to it.
+    print(x[3])
+
+    #this code prints the dictionary in reverse order
+    temp = [] #temporary list 
+    for k in x[4]:
+        temp += [k+':'+x[4][k]]
+    for i in range(-1, -(len(temp)), -1):
+        y = temp[i]
+        if i == (-(len(x[4])-1)):
+            print(y)
+            f.write(y+'\n')
+        else:
+            print (y, end = ', ')
+            f.write(y+', ')
+    print('\n') #inserts extra blank line
+    f.close()
+
 def Q1c():
     pass
 def Q1d():
@@ -56,7 +107,7 @@ def Q3a():
     pass
 
 def testQ1a(x):
-    #this test checks whether Q1a() returns varibles of the correct type
+    #this test checks whether Q1a() returns variables of the correct type
     assert(type(x[0]) == type(array.array('B')))
     assert(type(x[1]) == type((1,2)))
     assert(type(x[2]) == type([1]))
@@ -72,5 +123,6 @@ def testQ1a(x):
 def main():
     Q1a()
     testQ1a(Q1a())
+    Q1b(Q1a())
     
 main()
