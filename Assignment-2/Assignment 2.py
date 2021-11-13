@@ -55,7 +55,22 @@ def Q2d():
 def Q3a():
     pass
 
+def testQ1a(x):
+    #this test checks whether Q1a() returns varibles of the correct type
+    assert(type(x[0]) == type(array.array('B')))
+    assert(type(x[1]) == type((1,2)))
+    assert(type(x[2]) == type([1]))
+    assert(type(x[3]) == type({1, 2}))
+    assert(type(x[4]) == type({1:2, 2:1}))
+
+    #if the test passes, it runs the following
+    print("No Errors\n")
+
+    for i in x:
+        print(i, '\n')
+
 def main():
     Q1a()
+    testQ1a(Q1a())
     
 main()
