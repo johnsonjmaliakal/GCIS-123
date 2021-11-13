@@ -90,7 +90,10 @@ def Q1b(x):
     f.close()
 
 def Q1c():
-    pass
+    with open('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'r') as f:
+        for i in f:
+            print (i, end = '')
+
 def Q1d():
     pass
 
@@ -134,5 +137,6 @@ def main():
     testQ1a(Q1a())
     Q1b(Q1a())
     testQ1b()
+    Q1c()
     
 main()
