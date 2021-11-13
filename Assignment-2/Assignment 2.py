@@ -39,9 +39,9 @@ def Q1a(): #this function is the solution for question 1, part a
 def Q1b(x):
     f = open('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'w')
     #this code prints the array in reverse order
-    for i in range(-1, -(len(x[0])), -1):
+    for i in range(-1, -(len(x[0]))-1, -1):
         y = x[0][i]
-        if i == (-(len(x[0])-1)):
+        if i == (-(len(x[0]))):
             print(y)
             f.write(str(y)+'\n')
         else:
@@ -50,9 +50,9 @@ def Q1b(x):
     print('\n') #inserts extra blank line 
 
     #this code prints the tuple in reverse order
-    for i in range(-1, -(len(x[1])), -1):
+    for i in range(-1, -(len(x[1]))-1, -1):
         y = x[1][i]
-        if i == (-(len(x[1])-1)):
+        if i == (-(len(x[1]))):
             print(y)
             f.write(y+'\n')
         else:
@@ -61,9 +61,9 @@ def Q1b(x):
     print('\n') #inserts extra blank line
 
     #this code prints the list in reverse order
-    for i in range(-1, -(len(x[2])), -1):
+    for i in range(-1, -(len(x[2]))-1, -1):
         y = x[2][i]
-        if i == (-(len(x[2])-1)):
+        if i == (-(len(x[2]))):
             print(y)
             f.write(y+'\n')
         else:
@@ -71,7 +71,7 @@ def Q1b(x):
             f.write(y+', ')
     print('\n') #inserts extra blank line  
 
-    #set is unordered, therefore there is no reverse order to it.
+    #set was saved backwards, and is unordered
     print(x[3])
 
     #this code prints the dictionary in reverse order
@@ -120,9 +120,19 @@ def testQ1a(x):
     for i in x:
         print(i, '\n')
 
+def testQ1b():
+    with open ('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'r') as x:
+        c = ''
+        for i in x:
+            c+=i
+        assert(len(c) != 0)
+        print ("No Errors\n")
+
+
 def main():
     Q1a()
     testQ1a(Q1a())
     Q1b(Q1a())
+    testQ1b()
     
 main()
