@@ -94,8 +94,23 @@ def Q1c():
         for i in f:
             print (i, end = '')
 
-def Q1d():
-    pass
+def Q1d(x): 
+    if 'Fujairah' in x[2]: #this function uses membership operator to check 
+        print('Found!', "Fujairah")
+    else:
+        print(None)
+
+    if 'brown' in x[3]: #this function uses membership operator to check 
+        print("Found", "brown")
+    else:
+        print(None)
+    
+    for i in x[4]: #this function iterates through the dictionary and checks
+        if x[4][i] == "Data Science":
+            print ("Found", "Data Science")
+            break
+    else:
+        print(None)
 
 def Q2a():
     pass
@@ -138,5 +153,6 @@ def main():
     Q1b(Q1a())
     testQ1b()
     Q1c()
+    Q1d(Q1a())
     
 main()
