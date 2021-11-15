@@ -135,7 +135,8 @@ def Q2a(A):
                 j = j-1
             l[j+1] = x
         print(l)
-    insertionSort(A[0])
+        return l
+    arrS = insertionSort(A[0])
 
     #Merge Sort
     def mergeSort(A):
@@ -155,14 +156,13 @@ def Q2a(A):
     
             lenLeft = len(leftA)
             lenRight = len(rightA)
-            while p < lenLeft and q < lenRight:
+            while p < lenLeft and q < lenRight and rightA[q] !='' and leftA[p] != '':
                 if leftA[p] < rightA[q]:
                     temp[r] = leftA[p]
                     p += 1
                 else:
                     temp[r] = rightA[q]
                     q += 1
-                
                 r += 1
     
             
@@ -178,7 +178,8 @@ def Q2a(A):
         else:
             temp = list(A)
         return temp
-    print(tuple(A[1]))
+    tupleS = tuple(mergeSort(A[1]))
+    print(tupleS)
 
     #Quick Sort
     def quickSort (A, low, high):
@@ -199,7 +200,9 @@ def Q2a(A):
         array[b], array[a] = array[a], array[b]
     
     quickSort(A[2], 0, len(A[2])-1)
+    listS = A[2]
     print(A[2])
+    return [arrS, tupleS, listS]
 
 def Q2b(A):
     # Sets cannot be sorted as they are unordered objects. The same applies for dictionaries; they do not use indexes and use keys instead.
@@ -245,9 +248,35 @@ def Q2c(A, B):
         f.write('\n')
 
 def Q2d():
-    pass
+    with open('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'r') as f:
+        for i in f:
+            print (i, end = '')
 
-def Q3a():
+def Q3a(A, B):
+    #this code saves the sorted content from Q2a and Q2b into assignment2_file2.csv
+    with open ('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file2.csv', 'w') as f:
+        for i in A[0]:
+            f.write(str(i)+',')
+        f.write('\n')
+
+        for i in A[1]:
+            f.write(str(i)+',')
+        f.write('\n')
+
+        
+        for i in A[2]:
+            f.write(i+',')
+        f.write('\n')                
+        
+        for i in B[0]:
+            f.write(i+',')
+        f.write('\n')                      
+
+        C = Q1a()
+        for i in B[1]:
+            f.write(i+':'+C[4][i]+', ')
+        f.write('\n')
+
     pass
 
 def testQ1a(x):
@@ -281,8 +310,11 @@ def main():
     Q1c()
     Q1d(x)
 
-    Q2a(x)
-    Q2b(x)
+    y = Q2a(x)
+    z = Q2b(x)
     Q2c(Q2b(x), x)
+    Q2d()
+
+    Q3a(y, z)
     
 main()
