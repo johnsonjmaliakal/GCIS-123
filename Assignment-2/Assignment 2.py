@@ -89,9 +89,9 @@ def Q1b(x):
     temp = [] #temporary list 
     for k in x[4]:
         temp += [k+':'+x[4][k]]
-    for i in range(-1, -(len(temp)), -1):
+    for i in range(-1, -(len(temp))-1, -1):
         y = temp[i]
-        if i == (-(len(x[4])-1)):
+        if i == (-(len(x[4]))):
             print(y)
             f.write(y+'\n')
         else:
@@ -201,10 +201,49 @@ def Q2a(A):
     quickSort(A[2], 0, len(A[2])-1)
     print(A[2])
 
-def Q2b():
-    pass
-def Q2c():
-    pass
+def Q2b(A):
+    # Sets cannot be sorted as they are unordered objects. The same applies for dictionaries; they do not use indexes and use keys instead.
+    # The following code sorts set1 and dictionary1 to append to assignment2_file.txt
+    s = list(A[3]) #turns the set into a list for sorting
+
+    #Quick Sort
+    def quickSort (A, low, high):
+        if low < high:
+            p = partition (A, low, high)
+            quickSort (A, low, p-1)
+            quickSort (A, p+1, high)
+    def partition(A, low, high):
+        pivot = A[high]
+        i = low
+        for j in range (low, high+1):
+            if A[j] < pivot:
+                swap (A, i, j)
+                i = i+1
+        swap (A, i, high)
+        return i
+    def swap(array, a, b):
+        array[b], array[a] = array[a], array[b]
+
+    quickSort(s, 0, len(s)-1)
+    print("Sorted List of set1:", s)
+
+    d = []
+    for i in (A[4]):
+        d+=[i]
+    print("Sorted List of keys of dictionary1:", d)
+
+    return [s, d]
+
+def Q2c(A, B):
+    with open('C:/Users/johns/OneDrive/Documents/University/GCIS 123/GCIS-123/Assignment-2/assignment2_file.txt', 'a') as f:
+        for i in A[0]:
+            f.write(i+', ')
+        f.write('\n')
+
+        for i in A[1]:
+            f.write(i+':'+B[4][i]+', ')
+        f.write('\n')
+
 def Q2d():
     pass
 
@@ -235,13 +274,15 @@ def testQ1b():
 
 
 def main():
-    Q1a()
-    testQ1a(Q1a())
-    Q1b(Q1a())
+    x = Q1a()
+    testQ1a(x)
+    Q1b(x)
     testQ1b()
     Q1c()
-    Q1d(Q1a())
+    Q1d(x)
 
-    Q2a(Q1a())
+    Q2a(x)
+    Q2b(x)
+    Q2c(Q2b(x), x)
     
 main()
