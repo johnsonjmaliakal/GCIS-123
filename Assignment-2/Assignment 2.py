@@ -15,7 +15,10 @@ def Q1a(): #this function is the solution for question 1, part a
             elif c == 1:
                 tuple1 = ()
                 for j in i:
-                    tuple1 += (j,) #without the comma, it is not recognized as a tuple
+                    try:
+                        tuple1 += (int(j),) #without the comma, it is not recognized as a tuple
+                    except:
+                        tuple1 += (j,)
                 c+=1
             elif c == 2:
                 list1 = i
@@ -51,7 +54,7 @@ def Q1b(x):
 
     #this code prints the tuple in reverse order
     for i in range(-1, -(len(x[1]))-1, -1):
-        y = x[1][i]
+        y = str(x[1][i])
         if i == (-(len(x[1]))):
             print(y)
             f.write(y+'\n')
@@ -72,6 +75,14 @@ def Q1b(x):
     print('\n') #inserts extra blank line  
 
     #set was saved backwards, and is unordered
+    c = 0
+    print(len(x[3]))
+    for i in (x[3]):
+        if c == (len(x[3])-1):
+            f.write(i+'\n')
+        else:
+            f.write(i+', ')    
+            c+=1
     print(x[3])
 
     #this code prints the dictionary in reverse order
@@ -112,8 +123,84 @@ def Q1d(x):
     else:
         print(None)
 
-def Q2a():
-    pass
+def Q2a(A):
+    #Insertion Sort
+    def insertionSort(l):
+        n = len(l)
+        for i in range (1, n):
+            x = l[i]
+            j = i-1
+            while ((x < l[j]) and (j >= 0)):
+                l[j+1] = l[j]
+                j = j-1
+            l[j+1] = x
+        print(l)
+    insertionSort(A[0])
+
+    #Merge Sort
+    def mergeSort(A):
+        size = len(A)
+        temp = [0 for i in range(len(A))]
+        if size > 1:
+            middle = size // 2
+            leftA = A[:middle]
+            rightA = A[middle:]
+    
+            leftA = mergeSort(leftA)
+            rightA = mergeSort(rightA)
+    
+            p = 0
+            q = 0
+            r = 0
+    
+            lenLeft = len(leftA)
+            lenRight = len(rightA)
+            while p < lenLeft and q < lenRight:
+                if leftA[p] < rightA[q]:
+                    temp[r] = leftA[p]
+                    p += 1
+                else:
+                    temp[r] = rightA[q]
+                    q += 1
+                
+                r += 1
+    
+            
+            while p < lenLeft:
+                temp[r] = leftA[p]
+                p += 1
+                r += 1
+    
+            while q < lenRight:
+                temp[r]=rightA[q]
+                q += 1
+                r += 1
+        else:
+            temp = list(A)
+        return temp
+    print(tuple(A[1]))
+
+    #Quick Sort
+    def quickSort (A, low, high):
+        if low < high:
+            p = partition (A, low, high)
+            quickSort (A, low, p-1)
+            quickSort (A, p+1, high)
+    def partition(A, low, high):
+        pivot = A[high]
+        i = low
+        for j in range (low, high+1):
+            if A[j] < pivot:
+                swap (A, i, j)
+                i = i+1
+        swap (A, i, high)
+        return i
+    def swap(array, a, b):
+        array[b], array[a] = array[a], array[b]
+    
+    quickSort(A[2], 0, len(A[2])-1)
+    print(A[2])
+
 def Q2b():
     pass
 def Q2c():
@@ -154,5 +241,7 @@ def main():
     testQ1b()
     Q1c()
     Q1d(Q1a())
+
+    Q2a(Q1a())
     
 main()
