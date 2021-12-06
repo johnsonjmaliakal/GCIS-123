@@ -7,7 +7,7 @@ class Physician:
     def __repr__(self):
         return self.__id+','+ self.__name+','+ self.__specialty
     def __str__(self):
-        return self.__name+" with Employee ID "+self.__id+", specializing in "+self.__specialty
+        return self.__id+','+ self.__name+','+ self.__specialty
 
     def get_id(self):
         return self.__id
@@ -59,6 +59,9 @@ class Encounter:
         self.date = date
         self.disease = disease
         self.medication = medication
+    
+    def __str__(self):
+        return str(self.Physician)+','+str(self.Patient)+','+self.date+','+self.disease+','+self.medication
 
 def patientReader():
     with open ("patients.csv", 'r') as x:
@@ -97,7 +100,7 @@ def encounterSave(E):
     import csv
     with open('encounter.csv', 'w') as x:
         for i in E:
-            x.write(i+'\n')
+            x.write(str(i)+'\n')
 
 def main():
     P1 = patientReader()
@@ -117,5 +120,6 @@ def main():
     print()
     for i in E:
         print(i)
-    
+    encounterSave(E)
+
 main()
