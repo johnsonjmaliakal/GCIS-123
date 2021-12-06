@@ -233,6 +233,7 @@ def Q2b(A):
     d = []
     for i in (A[4]):
         d+=[i]
+    quickSort(d, 0, len(d)-1)
     print("Sorted List of keys of dictionary1:", d)
 
     return [s, d]
